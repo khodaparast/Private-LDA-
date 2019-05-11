@@ -1,0 +1,39 @@
+package lda.paillier;
+
+import java.math.BigInteger;
+import java.util.Random;
+
+/**
+ * Created by "Khodaparast" on 2018-08-04.
+ */
+public class CryptoUtils {
+
+    public BigInteger getGCD(BigInteger val1, BigInteger val2) {
+        return val1.gcd(val2);
+    }
+
+
+    public BigInteger getLCM(BigInteger val1, BigInteger val2) {
+        BigInteger temp = val1.multiply(val2);
+        CryptoUtils utils = new CryptoUtils();
+
+        return temp.divide(utils.getGCD(val1, val2));
+    }
+
+    public float getScaled(float val, int scale){
+        System.out.println(val);
+        float result= (float) (val*(Math.pow(10,scale)));
+        System.out.println(result);
+        return result;
+    }
+
+    public BigInteger getPrime(int bitLength) {
+
+        return BigInteger.probablePrime(bitLength, new Random());
+    }
+
+    public BigInteger getRandomValue(int bitLength){
+        BigInteger randomNum=new BigInteger(bitLength,new Random());
+        return randomNum;
+    }
+}
